@@ -1,0 +1,77 @@
+스크롤 시 FadeIn/Out
+
+1. div에 reveal class를 추가해준다.
+
+ <!-- 배너 이미지 영역 -->
+    <section class="grid_banner_wrap">
+        <div id="wrap">
+            <div class="grid_banner gb1 reveal">
+                <div class="gb_info">
+                    <h2>TEST1</h2>
+                    <p>TEST</p>
+                </div>
+                <button class="grid_banner_btn">Discover</button>
+            </div>
+            <div class="grid_banner gb2 reveal">
+                <div class="gb_info">
+                    <h2>TEST2</h2>
+                    <p>TEST</p>
+                </div>
+                <button class="grid_banner_btn">Discover</button>
+            </div>
+            <div class="grid_banner gb3 reveal">
+                <div class="gb_info">
+                    <h2>TEST3</h2>
+                    <p>TEST</p>
+                </div>
+                <button class="grid_banner_btn">Discover</button>
+            </div>
+            <div class="grid_banner gb4 reveal">
+                <div class="gb_info">
+                    <h2>TEST4</h2>
+                    <p>TEST</p>
+                </div>
+                <button class="grid_banner_btn">Discover</button>
+            </div>
+        </div>
+    </section>
+
+2.  
+.items{
+    animation: reveal 0.5s ease; 
+  }
+.reveal{
+    position: relative;
+    opacity: 0;
+    transition: all 0.5s ease;
+ }
+
+ .reveal.active{
+    /* position: relative; */
+    opacity: 1;
+}
+
++ 추가
+animation-delay: 0s; /* 딜레이 사용하여 순서대로 나타낼 수도 있음*/
+
+3. script 코드 추가
+//스크롤 시 서서히 나타나는 효과
+window.addEventListener('scroll', reveal);
+
+    function reveal(){
+        var reveals = document.querySelectorAll('.reveal');
+
+        for(var i=0; i< reveals.length; i++ ){
+
+            var windowHeight = window.innerHeight;
+            var revealTop = reveals[i].getBoundingClientRect().top;
+            var revealPoint = 250;
+
+            if(revealTop< windowHeight - revealPoint){
+                reveals[i].classList.add('active');
+            }else{
+                reveals[i].classList.remove('active');
+
+            }
+        }
+    }
