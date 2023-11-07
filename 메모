@@ -75,3 +75,6 @@ window.addEventListener('scroll', reveal);
             }
         }
     }
+
+
++ transition-delay:0.1s;추가해서 순서대로 줄 수 있음. 딜레이. 
